@@ -14,24 +14,24 @@ except NameError:
 
 from aloe import around, before, step, world
 
-import aloe_webdriver
+import aloe_webdriver.base as base
 import aloe_webdriver.css
 
 from aloe_webdriver.tests.base import create_browser, test_server
 
 # This module is reloaded during testing in order to re-register the steps and
 # callbacks. Make sure the modules where the steps are defined are, too.
-reload(aloe_webdriver)
-reload(aloe_webdriver.css)
+reload(base)
+reload(base.css)
 
 if os.environ.get('TAKE_SCREENSHOTS'):
     # Only register the screenshot steps if asked to
     import aloe_webdriver.screenshot_failed
-    reload(aloe_webdriver.screenshot_failed)
+    reload(base.screenshot_failed)
 
     SCREENSHOTS_DIR = os.environ.get('SCREENSHOTS_DIR')
     if SCREENSHOTS_DIR:
-        aloe_webdriver.screenshot_failed.DIRECTORY = SCREENSHOTS_DIR
+        base.screenshot_failed.DIRECTORY = SCREENSHOTS_DIR
 
 
 @around.all

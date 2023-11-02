@@ -10,7 +10,7 @@ from aloe import step
 from aloe_django import django_url
 
 # make sure the steps are loaded
-import aloe_webdriver  # pylint:disable=unused-import
+import aloe_webdriver.base as base  # pylint:disable=unused-import
 
 
 @step(r'I visit site page "([^"]*)"')
